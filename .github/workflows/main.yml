@@ -1,4 +1,4 @@
-name: workflowAction
+name: A workflow for my Hello World App
 on: push
 
 jobs:
@@ -8,17 +8,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Set up JDK 19
+      - name: Set up JDK 11
         uses: actions/setup-java@v2
         with:
-          java-version: '19'
+          java-version: '11'
           distribution: 'adopt'
       - name: Compile with Maven
-        run: mvn package
+        run: mvn compile
       - name: Build Docker Image
-        run: docker build -t group10 .
+        run: docker build -t semimage .
       - name: Run image
-        run: docker run --name group10container -d group10
+        run: docker run --name semcontainer -d semimage
       - name: view logs
-        run: docker logs group10container
-        
+        run: docker logs semcontainer

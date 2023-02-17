@@ -4,5 +4,5 @@
 ![GitHub Workflow Status (branch)](https://img.shields.io/github/actions/workflow/status/Group-10-SEM/group10sem/main.yml?branch=release)
 
 this is a read me file
-THis is more read me text
-tewsting thw wrkflow
+This is more read me text
+testing the workflow

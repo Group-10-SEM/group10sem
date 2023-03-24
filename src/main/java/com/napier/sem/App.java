@@ -87,6 +87,7 @@ public class App
         }
     }
 
+
     public int getCityID(String cName)
     {
         try
@@ -97,7 +98,7 @@ public class App
             String strSelect =
                     "SELECT ID, Name "
                             + "FROM city "
-                            + "WHERE Name = 'London'";
+                            + "WHERE Name = '" + cName + "'";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Return new employee if valid.

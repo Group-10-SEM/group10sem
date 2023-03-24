@@ -1,6 +1,7 @@
 package com.napier.sem;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class App
 {
@@ -16,7 +17,13 @@ public class App
         // Display results
         //a.displayEmployee(emp);
 
-        System.out.println(a.getCityID("London"));
+        ArrayList<City> cities = a.getCities();
+
+        //cities.add();
+
+        a.displayCity(a.getCity("London"));
+
+        cities.forEach((aCity) -> a.displayCity(aCity));
 
         // Disconnect from database
         a.disconnect();
@@ -88,7 +95,7 @@ public class App
     }
 
 
-    public int getCityID(String cName)
+    public City getCity(String cName)
     {
         try
         {
@@ -96,7 +103,7 @@ public class App
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT ID, Name "
+                    "SELECT ID, Name, CountryCode, District, Population "
                             + "FROM city "
                             + "WHERE Name = '" + cName + "'";
             // Execute SQL statement
@@ -105,34 +112,73 @@ public class App
             // Check one is returned
             if (rset.next())
             {
-
-                int ID = rset.getInt("ID");
-                return ID;
+                return parseCity(rset);
             }
             else
-                return 0;
+                return null;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get employee details");
-            return 0;
+            System.out.println("Failed to get city details");
+            return null;
         }
     }
 
-
-    public void displayEmployee(Employee emp)
+    public ArrayList<City> getCities()
     {
-        if (emp != null)
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT ID, Name, CountryCode, District, Population "
+                            + "FROM city";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Return new employee if valid.
+            // Check one is returned
+            ArrayList<City> cities = new ArrayList<>();
+
+            while (rset.next())
+            {
+
+                City city = parseCity(rset);
+                cities.add(city);
+            }
+
+            return cities;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get city details");
+            return null;
+        }
+    }
+
+    private City parseCity(ResultSet rset) throws SQLException {
+        City city = new City();
+        city.city_id = rset.getInt("ID");
+        city.city_name = rset.getString("Name");
+        city.city_countryCode = rset.getString("CountryCode");
+        city.city_district = rset.getString("District");
+        city.city_population = rset.getInt("Population");
+        return city;
+    }
+
+
+    public void displayCity(City city)
+    {
+        if (city != null)
         {
             System.out.println(
-                    emp.emp_no + " "
-                            + emp.first_name + " "
-                            + emp.last_name + "\n"
-                            + emp.title + "\n"
-                            + "Salary:" + emp.salary + "\n"
-                            + emp.dept_name + "\n"
-                            + "Manager: " + emp.manager + "\n");
+                    city.city_id + "\n"
+                            + city.city_name + "\n"
+                            + city.city_countryCode + "\n"
+                            + city.city_district + "\n"
+                            + city.city_population + "\n");
         }
     }
 

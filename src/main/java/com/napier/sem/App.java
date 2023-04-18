@@ -12,18 +12,16 @@ public class App
 
         // Connect to database
         a.connect();
-        // Get Employee
-        //Employee emp = a.getEmployee(255530);
-        // Display results
-        //a.displayEmployee(emp);
 
-        ArrayList<City> cities = a.getCities();
+        ArrayList<Country> countries = a.getCountries(
+                "SELECT Code, Name, Continent, Region, SurfaceArea,IndepYear, Population, LifeExpectancy, GNP, GNPOLD, LocalName, GovernmentForm, HeadOfState, Code2 ",
+                "FROM country ",
+                "WHERE Code = 'ZWE' ",
+                "");
+        countries.forEach(a::displayCountry);
 
-        //cities.add();
-
-        a.displayCity(a.getCity("London"));
-
-        cities.forEach((aCity) -> a.displayCity(aCity));
+        //ArrayList<City> cities = a.getCities();
+        //cities.forEach(a::displayCity);
 
         // Disconnect from database
         a.disconnect();
@@ -127,14 +125,21 @@ public class App
 
     public ArrayList<City> getCities()
     {
+        return getCities(
+                "SELECT ID, Name, CountryCode, District, Population ",
+                "FROM city",
+                "",
+                "" );
+    }
+
+    public ArrayList<City> getCities(String selectStatement, String fromStatement, String whereStatement, String orderStatement)
+    {
         try
         {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect =
-                    "SELECT ID, Name, CountryCode, District, Population "
-                            + "FROM city";
+            String strSelect = selectStatement + fromStatement + whereStatement + orderStatement;
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Return new employee if valid.
@@ -160,12 +165,34 @@ public class App
 
     private City parseCity(ResultSet rset) throws SQLException {
         City city = new City();
+
         city.city_id = rset.getInt("ID");
         city.city_name = rset.getString("Name");
         city.city_countryCode = rset.getString("CountryCode");
         city.city_district = rset.getString("District");
         city.city_population = rset.getInt("Population");
         return city;
+    }
+
+    private Country parseCountry(ResultSet rset) throws SQLException {
+        Country country = new Country();
+
+        country.Code = rset.getString("Code");
+        country.Name = rset.getString("Name");
+        country.Continent = rset.getString("Continent");
+        country.Region = rset.getString("Region");
+        country.SurfaceArea = rset.getFloat("SurfaceArea");
+        country.IndepYear = rset.getInt("IndepYear");
+        country.Population = rset.getInt("Population");
+        country.LifeExpectancy = rset.getFloat("LifeExpectancy");
+        country.GNP = rset.getFloat("GNP");
+        country.GNPOLD = rset.getFloat("GNPOLD");
+        country.LocalName = rset.getString("LocalName");
+        country.GovernmentForm = rset.getString("GovernmentForm");
+        country.HeadOfState = rset.getString("HeadOfState");
+        country.Code2 = rset.getString("Code2");
+
+        return country;
     }
 
 
@@ -179,6 +206,67 @@ public class App
                             + city.city_countryCode + "\n"
                             + city.city_district + "\n"
                             + city.city_population + "\n");
+        }
+    }
+
+    public ArrayList getCountries()
+    {
+        return getCountries(
+                "SELECT Code, Name, Continent, Region, SurfaceArea,IndepYear, Population, LifeExpectancy, GNP, GNPOLD, LocalName, GovernmentForm, HeadOfState, Code2 ",
+                "FROM country ",
+                "",
+                "ORDER BY Population DESC");
+    }
+
+    public ArrayList<Country> getCountries(String selectStatement, String fromStatement, String whereStatement, String orderStatement)
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = selectStatement + fromStatement + whereStatement + orderStatement;
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Return new employee if valid.
+            // Check one is returned
+            ArrayList<Country> countries = new ArrayList<>();
+
+            while (rset.next())
+            {
+                Country country = parseCountry(rset);
+                countries.add(country);
+            }
+
+            return countries;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country details");
+            return null;
+        }
+    }
+
+    public void displayCountry(Country country)
+    {
+        if (country != null)
+        {
+            System.out.println(
+                    country.Code + "\n"
+                            + country.Name + "\n"
+                            + country.Continent + "\n"
+                            + country.Region + "\n"
+                            + country.SurfaceArea + "\n"
+                            + country.IndepYear + "\n"
+                            + country.Population + "\n"
+                            + country.LifeExpectancy + "\n"
+                            + country.GNP + "\n"
+                            + country.GNPOLD + "\n"
+                            + country.LocalName + "\n"
+                            + country.GovernmentForm + "\n"
+                            + country.HeadOfState + "\n"
+                            + country.Code2 + "\n");
         }
     }
 

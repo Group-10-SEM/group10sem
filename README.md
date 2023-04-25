@@ -3,6 +3,6 @@
 [![Releases](https://img.shields.io/github/release/Group-10-SEM/group10sem/all.svg?style=flat-square)](https://github.com/<github-username>/group10sem/releases)
 ![GitHub Workflow Status (branch)](https://img.shields.io/github/actions/workflow/status/Group-10-SEM/group10sem/main.yml?branch=release)
 
-this is a read me file
-This is more read me text
+this is a read me file\
+This is more read me text\
 testing the workflow1

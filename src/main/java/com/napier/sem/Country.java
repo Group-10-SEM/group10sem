@@ -1,7 +1,10 @@
 package com.napier.sem;
 
-import java.nio.charset.CoderResult;
 
+/**
+ * Probably not needed anymore
+ * remove before release
+ */
 public class Country
 {
     public String Code;

@@ -9,18 +9,18 @@ public class App
     String getStatements(int number, String input) {
         String[] Statements = {
                 //0-5
-                "SELECT Name, Population FROM country ORDER BY Population DESC",
-                "SELECT Name, Continent, Population FROM country WHERE Continent = 'Europe' ORDER BY Population DESC",
-                "SELECT Name, Region, Population FROM country WHERE Region = 'British Islands' ORDER BY Population DESC",
-                "SELECT Name, Population FROM country ORDER BY Population DESC LIMIT " + input,
-                "SELECT Name, Continent, Population FROM country WHERE Continent = 'Europe' ORDER BY Population DESC LIMIT " + input,
-                "SELECT Name, Region, Population FROM country WHERE Region = 'British Islands' ORDER BY Population DESC LIMIT " + input,
+                "SELECT Code, Name, Continent, Region, Population, Capital FROM country ORDER BY Population DESC",
+                "SELECT Code, Name, Continent, Region, Population, Capital FROM country WHERE Continent = 'Europe' ORDER BY Population DESC",
+                "SELECT Code, Name, Continent, Region, Population, Capital FROM country WHERE Region = 'British Islands' ORDER BY Population DESC",
+                "SELECT Code, Name, Continent, Region, Population, Capital FROM country ORDER BY Population DESC LIMIT " + input,
+                "SELECT Code, Name, Continent, Region, Population, Capital FROM country WHERE Continent = 'Europe' ORDER BY Population DESC LIMIT " + input,
+                "SELECT Code, Name, Continent, Region, Population, Capital FROM country WHERE Region = 'British Islands' ORDER BY Population DESC LIMIT " + input,
                 //6-10
-                "SELECT Name, Population FROM city ORDER BY Population DESC",
-                "SELECT city.Name, country.Continent, city.Population FROM city INNER JOIN country ON city.CountryCode = country.Code WHERE country.Continent = 'Europe' ORDER BY city.Population DESC",
-                "SELECT city.Name, country.Region, city.Population FROM city INNER JOIN country ON city.CountryCode = country.Code WHERE country.Region = 'British Islands' ORDER BY city.Population DESC",
-                "SELECT Name, Population FROM city WHERE CountryCode = 'GBR' ORDER BY Population DESC",
-                "SELECT Name, Population FROM city WHERE District = 'Scotland' ORDER BY Population DESC",
+                "SELECT Name, CountryCode, District, Population FROM city ORDER BY Population DESC",
+                "SELECT city.Name, city.CountryCode, city.District, city.Population, country.Continent FROM city INNER JOIN country ON city.CountryCode = country.Code WHERE country.Continent = 'Europe' ORDER BY city.Population DESC",
+                "SELECT city.Name, city.CountryCode, city.District, city.Population, country.Region FROM city INNER JOIN country ON city.CountryCode = country.Code WHERE country.Region = 'British Islands' ORDER BY city.Population DESC",
+                "SELECT Name, CountryCode, District, Population FROM city WHERE CountryCode = 'GBR' ORDER BY Population DESC",
+                "SELECT Name, CountryCode, District, Population FROM city WHERE District = 'Scotland' ORDER BY Population DESC",
                 //11-15
                 "SELECT Name, Population FROM city ORDER BY Population DESC LIMIT " + input,
                 "SELECT city.Name, country.Continent, city.Population FROM city INNER JOIN country ON city.CountryCode = country.Code WHERE country.Continent = 'Europe' ORDER BY city.Population DESC LIMIT " + input,

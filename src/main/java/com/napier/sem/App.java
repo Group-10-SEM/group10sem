@@ -22,11 +22,11 @@ public class App
                 "SELECT Name, CountryCode, District, Population FROM city WHERE CountryCode = 'GBR' ORDER BY Population DESC",
                 "SELECT Name, CountryCode, District, Population FROM city WHERE District = 'Scotland' ORDER BY Population DESC",
                 //11-15
-                "SELECT Name, Population FROM city ORDER BY Population DESC LIMIT " + input,
-                "SELECT city.Name, country.Continent, city.Population FROM city INNER JOIN country ON city.CountryCode = country.Code WHERE country.Continent = 'Europe' ORDER BY city.Population DESC LIMIT " + input,
-                "SELECT city.Name, country.Region, city.Population FROM city INNER JOIN country ON city.CountryCode = country.Code WHERE country.Region = 'British Islands' ORDER BY city.Population DESC LIMIT " + input,
-                "SELECT Name, Population FROM city WHERE CountryCode = 'GBR' ORDER BY Population DESC LIMIT " + input,
-                "SELECT Name, Population FROM city WHERE District = 'Scotland' ORDER BY Population DESC LIMIT " + input,
+                "SELECT Name, CountryCode, District, Population FROM city ORDER BY Population DESC LIMIT " + input,
+                "SELECT city.Name, city.CountryCode, city.District, city.Population, country.Continent FROM city INNER JOIN country ON city.CountryCode = country.Code WHERE country.Continent = 'Europe' ORDER BY city.Population DESC LIMIT " + input,
+                "SELECT city.Name, city.CountryCode, city.District, city.Population, country.Region FROM city INNER JOIN country ON city.CountryCode = country.Code WHERE country.Region = 'British Islands' ORDER BY city.Population DESC LIMIT " + input,
+                "SELECT Name, CountryCode, District, Population FROM city WHERE CountryCode = 'GBR' ORDER BY Population DESC LIMIT " + input,
+                "SELECT Name, CountryCode, District, Population FROM city WHERE District = 'Scotland' ORDER BY Population DESC LIMIT " + input,
                 //16-21
                 "SELECT city.Name, city.Population FROM city INNER JOIN country ON city.ID = country.Capital ORDER BY city.Population DESC",
                 "SELECT city.Name, country.Continent, city.Population FROM city INNER JOIN country ON city.ID = country.Capital WHERE country.Continent = 'Europe' ORDER BY city.Population DESC",
@@ -49,7 +49,7 @@ public class App
         // Connect to database
         a.connect();
 
-        for (int i = 22; i <= 22; i++) {
+        for (int i = 0; i <= 22; i++) {
             a.getSql(a.getStatements(i, "3"));
         }
 

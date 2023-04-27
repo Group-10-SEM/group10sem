@@ -34,8 +34,10 @@ public class App
                 "SELECT city.Name, country.Name, city.Population FROM city INNER JOIN country ON city.ID = country.Capital ORDER BY city.Population DESC LIMIT " + input,
                 "SELECT city.Name, country.Name, city.Population, country.Continent FROM city INNER JOIN country ON city.ID = country.Capital WHERE country.Continent = 'Europe' ORDER BY city.Population DESC LIMIT " + input,
                 "SELECT city.Name, country.Name, city.Population, country.Region FROM city INNER JOIN country ON city.ID = country.Capital WHERE country.Region = 'British Islands' ORDER BY city.Population DESC LIMIT " + input,
-                //22-22
-                "SELECT Continent, SUM(Population) AS 'Total Continent Population', SUM(CityPopulation) AS 'Total City Population', SUM(Population)-SUM(CityPopulation) AS 'Total Rural Population', CONCAT(ROUND(SUM(CityPopulation)/SUM(Population)*100, 2), '%') AS 'City %' FROM (SELECT country.Continent, country.Population, SUM(city.Population) AS CityPopulation FROM city INNER JOIN country ON city.CountryCode = country.Code GROUP BY country.Code) AS CountryPopulations GROUP BY Continent ORDER BY SUM(Population)"
+                //22-23
+                "SELECT Continent, SUM(Population) AS 'Total Continent Population', SUM(CityPopulation) AS 'Total City Population', SUM(Population)-SUM(CityPopulation) AS 'Total Rural Population', CONCAT(ROUND(SUM(CityPopulation)/SUM(Population)*100, 2), '%') AS 'City %' FROM (SELECT country.Continent, country.Population, SUM(city.Population) AS CityPopulation FROM city INNER JOIN country ON city.CountryCode = country.Code GROUP BY country.Code) AS CountryPopulations GROUP BY Continent ORDER BY SUM(Population)",
+                "SELECT Region, SUM(Population) AS 'Total Region Population', SUM(CityPopulation) AS 'Total City Population', SUM(Population)-SUM(CityPopulation) AS 'Total Rural Population', CONCAT(ROUND(SUM(CityPopulation)/SUM(Population)*100, 2), '%') AS 'City %' FROM (SELECT country.Region, country.Population, SUM(city.Population) AS CityPopulation FROM city INNER JOIN country ON city.CountryCode = country.Code GROUP BY country.Code) AS CountryPopulations GROUP BY Region ORDER BY SUM(Population)",
+                "SELECT country.Name, country.Population, SUM(city.Population) AS CityPopulation FROM city INNER JOIN country ON city.CountryCode = country.Code GROUP BY country.Code"
         };
 
         return Statements[number];

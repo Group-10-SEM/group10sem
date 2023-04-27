@@ -28,13 +28,13 @@ public class App
                 "SELECT Name, CountryCode, District, Population FROM city WHERE CountryCode = 'GBR' ORDER BY Population DESC LIMIT " + input,
                 "SELECT Name, CountryCode, District, Population FROM city WHERE District = 'Scotland' ORDER BY Population DESC LIMIT " + input,
                 //16-21
-                "SELECT city.Name, city.Population FROM city INNER JOIN country ON city.ID = country.Capital ORDER BY city.Population DESC",
-                "SELECT city.Name, country.Continent, city.Population FROM city INNER JOIN country ON city.ID = country.Capital WHERE country.Continent = 'Europe' ORDER BY city.Population DESC",
-                "SELECT city.Name, country.Region, city.Population FROM city INNER JOIN country ON city.ID = country.Capital WHERE country.Region = 'British Islands' ORDER BY city.Population DESC",
-                "SELECT city.Name, city.Population FROM city INNER JOIN country ON city.ID = country.Capital ORDER BY city.Population DESC LIMIT " + input,
-                "SELECT city.Name, country.Continent, city.Population FROM city INNER JOIN country ON city.ID = country.Capital WHERE country.Continent = 'Europe' ORDER BY city.Population DESC LIMIT " + input,
-                "SELECT city.Name, country.Region, city.Population FROM city INNER JOIN country ON city.ID = country.Capital WHERE country.Region = 'British Islands' ORDER BY city.Population DESC LIMIT " + input,
-                //22-??
+                "SELECT city.Name, country.Name, city.Population FROM city INNER JOIN country ON city.ID = country.Capital ORDER BY city.Population DESC",
+                "SELECT city.Name, country.Name, city.Population, country.Continent FROM city INNER JOIN country ON city.ID = country.Capital WHERE country.Continent = 'Europe' ORDER BY city.Population DESC",
+                "SELECT city.Name, country.Name, city.Population, country.Region FROM city INNER JOIN country ON city.ID = country.Capital WHERE country.Region = 'British Islands' ORDER BY city.Population DESC",
+                "SELECT city.Name, country.Name, city.Population FROM city INNER JOIN country ON city.ID = country.Capital ORDER BY city.Population DESC LIMIT " + input,
+                "SELECT city.Name, country.Name, city.Population, country.Continent FROM city INNER JOIN country ON city.ID = country.Capital WHERE country.Continent = 'Europe' ORDER BY city.Population DESC LIMIT " + input,
+                "SELECT city.Name, country.Name, city.Population, country.Region FROM city INNER JOIN country ON city.ID = country.Capital WHERE country.Region = 'British Islands' ORDER BY city.Population DESC LIMIT " + input,
+                //22-22
                 "SELECT Continent, SUM(Population) AS 'Total Continent Population', SUM(CityPopulation) AS 'Total City Population', SUM(Population)-SUM(CityPopulation) AS 'Total Rural Population', CONCAT(ROUND(SUM(CityPopulation)/SUM(Population)*100, 2), '%') AS 'City %' FROM (SELECT country.Continent, country.Population, SUM(city.Population) AS CityPopulation FROM city INNER JOIN country ON city.CountryCode = country.Code GROUP BY country.Code) AS CountryPopulations GROUP BY Continent ORDER BY SUM(Population)"
         };
 

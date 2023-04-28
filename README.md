@@ -51,8 +51,8 @@ testing the workflow1
 | 40  |||                                                                                                                                                                                                                           |     |     |
 | 41  |||                                                                                                                                                                                                                           |     |     |
 
-[img1]: https://github.com/Group-10-SEM/group10sem/blob/3e5f43673e36dbbc2488ce2b53548c59004c8062/readmeImages/img1.png ""
-[img2]: readmeImages/img1.png ""
+[img1]: readmeImages/img1.png ""
+[img2]: readmeImages/img2.png ""
 [img3]: https://github.com/Group-10-SEM/group10sem/blob/3e5f43673e36dbbc2488ce2b53548c59004c8062/readmeImages/img3.png ""
 [img4]: https://github.com/Group-10-SEM/group10sem/blob/3e5f43673e36dbbc2488ce2b53548c59004c8062/readmeImages/img4.png ""
 [img5]: https://github.com/Group-10-SEM/group10sem/blob/3e5f43673e36dbbc2488ce2b53548c59004c8062/readmeImages/img5.png ""

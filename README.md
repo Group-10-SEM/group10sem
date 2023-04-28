@@ -7,6 +7,15 @@ this is a read me file\
 This is more read me text\
 testing the workflow1
 
+| Name     | Matriculation Number | Code Review 1 | Code Review 2 | Code Review 3 | Code Review 4 |
+|----------|----------------------|---------------|---------------|---------------|---------------|
+| Fergus   | 40534638             | 25%           | 25%           | 25%           | 25%           |
+| Ross     | 40530741             | 25%           | 25%           | 25%           | 25%           |
+| Juliette | 40530672             | 25%           | 25%           | 25%           | 25%           |
+| Aman     | 40533412             | 25%           | 25%           | 25%           | 25%           |
+
+
+
 | ID  | NAME                                                                                                                                                                                                                      | MET | Screenshot                              |
 |-----|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----|-----------------------------------------|
 | 1   | All the countries in the world organised by largest population to smallest.                                                                                                                                               | YES | ![img1.png](readmeImages/img1.png "")   |

@@ -53,4 +53,4 @@ ID| NAME                                           | MET |Screenshot
 
 
 
-[logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 2"
+[logo]: https://github.com/Group-10-SEM/group10sem/blob/3e5f43673e36dbbc2488ce2b53548c59004c8062/readmeImages/img1.png "Logo Title Text 2"
